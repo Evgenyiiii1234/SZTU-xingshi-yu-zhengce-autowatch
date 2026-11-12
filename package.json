@@ -1,0 +1,16 @@
+{
+  "name": "sztu-duifene-autowatch",
+  "version": "1.2.0",
+  "description": "对分易网课自动观看（倍速伪装 + 进度打点）+ 视频转写与课程总结",
+  "private": true,
+  "scripts": {
+    "check": "node --check duifene-autowatch.user.js",
+    "test": "node tests/smoke_user_script.js",
+    "links": "python tests/check_links.py"
+  },
+  "devDependencies": {
+    "jsdom": "^27.0.0"
+  },
+  "license": "MIT",
+  "author": "YG"
+}

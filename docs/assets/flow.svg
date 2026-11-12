@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="280" viewBox="0 0 900 280" font-family="'Noto Sans SC','Microsoft YaHei','PingFang SC',-apple-system,sans-serif">
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#4a6b8a"/>
+    </marker>
+    <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#16202c"/><stop offset="1" stop-color="#111820"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="280" fill="#0d1117"/>
+
+  <text x="24" y="34" fill="#5c748c" font-size="12" letter-spacing="2">WORKFLOW</text>
+
+  <!-- 行 1 -->
+  <g>
+    <rect x="24" y="56" width="176" height="76" rx="10" fill="url(#g1)" stroke="#243244"/>
+    <text x="44" y="84" fill="#7fd1ff" font-size="14" font-weight="600">① 打开课程页</text>
+    <text x="44" y="108" fill="#8fa6bd" font-size="12">对分易 StFileManage</text>
+
+    <rect x="252" y="56" width="196" height="76" rx="10" fill="url(#g1)" stroke="#2a9c66"/>
+    <text x="272" y="84" fill="#31d07a" font-size="14" font-weight="600">② 用户脚本接管</text>
+    <text x="272" y="108" fill="#8fa6bd" font-size="12">8× 播放 · 对外报 1×</text>
+
+    <rect x="500" y="56" width="176" height="76" rx="10" fill="url(#g1)" stroke="#243244"/>
+    <text x="520" y="84" fill="#7fd1ff" font-size="14" font-weight="600">③ 复制视频直链</text>
+    <text x="520" y="108" fill="#8fa6bd" font-size="12">m3u8 / mp4</text>
+
+    <rect x="728" y="56" width="148" height="76" rx="10" fill="url(#g1)" stroke="#243244"/>
+    <text x="748" y="84" fill="#e8eef6" font-size="14" font-weight="600">作业完成</text>
+    <text x="748" y="108" fill="#8fa6bd" font-size="12">进度打满</text>
+  </g>
+
+  <path d="M200 94 H248" stroke="#4a6b8a" stroke-width="1.6" marker-end="url(#ar)"/>
+  <path d="M448 94 H496" stroke="#4a6b8a" stroke-width="1.6" marker-end="url(#ar)"/>
+  <path d="M676 94 H724" stroke="#4a6b8a" stroke-width="1.6" marker-end="url(#ar)"/>
+
+  <!-- 下行支线 -->
+  <path d="M588 132 V172 H352" stroke="#4a6b8a" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#ar)" fill="none"/>
+
+  <g>
+    <rect x="24" y="176" width="176" height="76" rx="10" fill="url(#g1)" stroke="#243244"/>
+    <text x="44" y="204" fill="#e8eef6" font-size="14" font-weight="600">⑥ 课程总结</text>
+    <text x="44" y="228" fill="#8fa6bd" font-size="12">out/*-summary.md</text>
+
+    <rect x="252" y="176" width="196" height="76" rx="10" fill="url(#g1)" stroke="#243244"/>
+    <text x="272" y="204" fill="#8b7dff" font-size="14" font-weight="600">⑤ 提纲 / 提示词包</text>
+    <text x="272" y="228" fill="#8fa6bd" font-size="12">summarize.py</text>
+
+    <rect x="500" y="176" width="176" height="76" rx="10" fill="url(#g1)" stroke="#243244"/>
+    <text x="520" y="204" fill="#8b7dff" font-size="14" font-weight="600">④ Whisper 转写</text>
+    <text x="520" y="228" fill="#8fa6bd" font-size="12">transcribe.py</text>
+
+    <rect x="728" y="176" width="148" height="76" rx="10" fill="url(#g1)" stroke="#243244"/>
+    <text x="748" y="204" fill="#e8eef6" font-size="14" font-weight="600">yt-dlp 下载</text>
+    <text x="748" y="228" fill="#8fa6bd" font-size="12">fetch_media.py</text>
+  </g>
+
+  <path d="M728 214 H680" stroke="#4a6b8a" stroke-width="1.6" marker-end="url(#ar)"/>
+  <path d="M500 214 H452" stroke="#4a6b8a" stroke-width="1.6" marker-end="url(#ar)"/>
+  <path d="M252 214 H204" stroke="#4a6b8a" stroke-width="1.6" marker-end="url(#ar)"/>
+</svg>

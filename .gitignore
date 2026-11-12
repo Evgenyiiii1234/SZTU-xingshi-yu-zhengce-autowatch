@@ -1,0 +1,26 @@
+# 依赖与产物
+node_modules/
+__pycache__/
+*.py[cod]
+
+# 运行产物（视频、文稿、字幕、日志都别提交）
+out/
+*.log
+cookies.txt
+*_reports.json
+
+# 大模型密钥
+.env
+env.local.ps1
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 自测样例的文本保留了，媒体文件不提交
+tests/selftest/*.mp4
+tests/selftest/*.wav
+tests/selftest/*.m4a
