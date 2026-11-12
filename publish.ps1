@@ -118,9 +118,17 @@ Write-Host "      推送完成" -ForegroundColor Green
 # ── 5. 打 topics + 确认 ──────────────────────────────────────────────
 Write-Host "[5/5] 设置仓库标签 …" -ForegroundColor Cyan
 $topics = @(
-  "tampermonkey", "userscript", "duifene", "faster-whisper", "whisper",
-  "speech-to-text", "yt-dlp", "python", "subtitles", "course-notes", "automation"
+  # 学校 / 课程 / 平台
+  "sztu", "xingshi-yu-zhengce", "duifene",
+  # 脚本与自动化
+  "userscript", "tampermonkey", "auto-watch", "course-automation", "study-automation",
+  # 转写与总结
+  "video-summary", "video-transcription", "lecture-notes", "course-notes",
+  "faster-whisper", "speech-to-text", "speech-recognition", "subtitles",
+  # 工具链
+  "yt-dlp", "m3u8", "python", "automation"
 )
+# GitHub topics 只接受小写字母/数字/连字符，最多 20 个，中文关键词放 Description 和 README
 try {
   Invoke-RestMethod "https://api.github.com/repos/$login/$RepoName/topics" -Method Put -Headers $headers `
     -Body ([System.Text.Encoding]::UTF8.GetBytes((@{ names = $topics } | ConvertTo-Json))) `
