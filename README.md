@@ -194,7 +194,7 @@ python pipeline/summarize.py "out\第3讲.md"
 | `small` | `分别是前序、中序和后序遍历` |
 | 原话 | 遍历方式有三种，分别是前序、中序和后序遍历 |
 
-自测结果（本仓库 CI 也在跑同样的检查）：
+自测结果（下面的命令都能跑，CI 配置见 [`ci/ci.yml`](ci/ci.yml)）：
 
 | 项目 | 结果 |
 | --- | --- |
@@ -250,7 +250,7 @@ python pipeline/summarize.py "out\第3讲.md"
 │   ├── 原理说明.md
 │   ├── 排错手册.md
 │   └── assets/                 banner / 流程 / 界面示意（SVG）
-├── .github/workflows/ci.yml    语法检查 + 冒烟测试
+├── ci/ci.yml                    GitHub Actions 配置（移入 .github/workflows/ 即启用）
 ├── go.ps1                       Windows 一条命令入口
 ├── env.example.ps1              大模型成稿的可选配置
 ├── publish.ps1                  一键建公开仓库并推送

@@ -1,0 +1,55 @@
+# GitHub Actions CI
+#
+# 启用方式（二选一）：
+#   1. 把本文件移动到 .github/workflows/ci.yml 再 push
+#      —— 注意：推送 workflow 文件需要 token 带 `workflow` scope（classic PAT 要额外勾选，
+#      fine-grained PAT 要授予 Workflows: Read and write），否则 GitHub 会拒绝 push。
+#   2. 直接在 GitHub 网页上 .github/workflows/ 里新建文件，把本文件内容粘进去。
+#
+# 检查项：JS 语法、jsdom 冒烟测试、Python 语法、四个 CLI --help、README/docs 内链。
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Node 环境
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: JS 语法检查
+        run: node --check duifene-autowatch.user.js
+
+      - name: 安装 jsdom
+        run: npm i --no-audit --no-fund
+
+      - name: 用户脚本冒烟测试
+        run: node tests/smoke_user_script.js
+
+      - name: Python 环境
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Python 语法检查
+        run: python -m py_compile pipeline/*.py tests/check_links.py
+
+      - name: CLI 可用性
+        run: |
+          python pipeline/fetch_media.py --help > /dev/null
+          python pipeline/transcribe.py --help > /dev/null
+          python pipeline/summarize.py --help > /dev/null
+          python pipeline/run_all.py --help > /dev/null
+
+      - name: README 与 docs 内链检查
+        run: python tests/check_links.py
