@@ -1,4 +1,4 @@
-﻿<#
+<#
 .SYNOPSIS
     在自己的 GitHub 账号下创建公开仓库并推送当前目录。
 
@@ -17,8 +17,10 @@
 
 param(
   [string]$Token = $env:GITHUB_TOKEN,
-  [string]$RepoName = "SZTU-形势与政策自动观看视频并总结脚本",
-  [string]$Description = "对分易 / SZTU 形势与政策网课：自动观看（倍速伪装 + 进度打点）、视频转写、课程笔记总结。Tampermonkey 用户脚本 + faster-whisper 本地管线。",
+  # 注意：GitHub 仓库名只接受 ASCII（字母/数字/-/_/.），中文名会 422。
+  # 所以 slug 用拼音，中文全名放进 Description。
+  [string]$RepoName = "SZTU-xingshi-yu-zhengce-autowatch",
+  [string]$Description = "SZTU 形势与政策 · 自动观看视频并总结脚本 —— 对分易网课自动观看（倍速伪装 + 进度打点）、视频转写、课程笔记总结。Tampermonkey 用户脚本 + faster-whisper 本地管线。",
   [string]$Owner = "",
   [switch]$Private
 )
@@ -81,7 +83,9 @@ try {
 if ($existing) {
   Write-Host "      仓库已存在，直接推送" -ForegroundColor Yellow
 } else {
-  $null = Invoke-RestMethod "https://api.github.com/user/repos" -Method Post -Headers $headers -Body $body -ContentType "application/json"
+  # 中文必须显式转成 UTF-8 字节，否则 Invoke-RestMethod 会按 ANSI 编码把中文变成问号
+  $null = Invoke-RestMethod "https://api.github.com/user/repos" -Method Post -Headers $headers `
+    -Body ([System.Text.Encoding]::UTF8.GetBytes($body)) -ContentType "application/json; charset=utf-8"
   Write-Host "      已创建" -ForegroundColor Green
 }
 
@@ -119,7 +123,8 @@ $topics = @(
 )
 try {
   Invoke-RestMethod "https://api.github.com/repos/$login/$RepoName/topics" -Method Put -Headers $headers `
-    -Body (@{ names = $topics } | ConvertTo-Json) -ContentType "application/json" | Out-Null
+    -Body ([System.Text.Encoding]::UTF8.GetBytes((@{ names = $topics } | ConvertTo-Json))) `
+    -ContentType "application/json; charset=utf-8" | Out-Null
   Write-Host "      标签：$($topics -join ', ')"
 } catch {
   Write-Host "      标签设置失败（不影响仓库）：$($_.Exception.Message)" -ForegroundColor Yellow

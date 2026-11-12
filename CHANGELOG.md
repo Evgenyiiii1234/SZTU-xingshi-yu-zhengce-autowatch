@@ -27,4 +27,4 @@
 - HF 直连失败自动切 `hf-mirror.com` 重试
 - `tests/smoke_user_script.js`：jsdom 冒烟测试，8 项断言
 - `tests/check_links.py`：README / docs 内链检查
-- GitHub Actions：语法检查 + 冒烟测试 + 内链检查
+- `ci/ci.yml`：GitHub Actions 配置（语法检查 + 冒烟测试 + 内链检查）
